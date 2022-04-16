@@ -6,12 +6,8 @@ import warnings
 import queue
 import socket
 from socket import error as SocketError
-try:
-    import balboa
-except ImportError:
-    import pybalboa as balboa
-    
-from balboa import *
+
+from .balboa import *
 
 
 
@@ -31,8 +27,8 @@ CC_REQ = 0xCC
 DETECT_CHANNEL_STATE_START = 0
 DETECT_CHANNEL_STATE_CHANNEL_NOT_FOUND = 5
 
-class SundanceRS485(balboa.BalboaSpaWifi):
-    def __init__(self, hostname, port=899):
+class SundanceRS485(BalboaSpaWifi):
+    def __init__(self, hostname, port=8899):
         super().__init__(hostname, port)
         logging.basicConfig()
         self.log = logging.getLogger(__name__)
