@@ -1,5 +1,12 @@
-import pybalboa as balboa
-import sundanceRS485
+try:
+    import balboa
+except ImportError:
+    import pybalboa as balboa
+    
+try:
+    import sundanceRS485
+except ImportError:
+    import sundanceRS485 as SundanceRS485
 
 import asyncio
 import sys

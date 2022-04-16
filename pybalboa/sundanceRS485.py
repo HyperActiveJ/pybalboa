@@ -6,7 +6,11 @@ import warnings
 import queue
 import socket
 from socket import error as SocketError
-import balboa
+try:
+    import balboa
+except ImportError:
+    import pybalboa as balboa
+    
 from balboa import *
 
 
