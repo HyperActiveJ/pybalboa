@@ -7,7 +7,7 @@ import queue
 import socket
 from socket import error as SocketError
 
-from .balboa import *
+from pybalboa import *
 
 
 
