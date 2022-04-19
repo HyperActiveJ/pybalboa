@@ -20,7 +20,7 @@ async def ReadR(spa, lastupd):
             print("Current Temp: {0}".format(spa.curtemp))
             print("Current Temp2: {0}".format(spa.temp2))
             print("Set Temp: {0}".format(spa.get_settemp()))          
-            print("Heat State: {0} {}".format(spa.get_heatstate(True),spa.heatState2)
+            print("Heat State: {0} {1}".format(spa.get_heatstate(True),spa.heatState2))
             print("Pump Status: {0}".format(str(spa.pump_status)))
             print("Circulation Pump: {0}  Auto:  {1}  Man: {2}  Unkfield: {3}".format(spa.get_circ_pump(True), spa.autoCirc, spa.manualCirc, spa.unknownCirc))
 
@@ -30,7 +30,7 @@ async def ReadR(spa, lastupd):
             print("UnknownField3: {}".format(spa.UnknownField3))
             print("UnknownField9: {}".format(spa.UnknownField9))
  
-            print("Light Status: {0}".format(str(spa.light_status)))
+            print("Light Status: M{0} Br{1} R{2} G{3} B{4} T{4}".format(spa.lightMode,spa.lightBrightnes,spa.lightR,spa.lightG, spa.lightB, spa.lightCycleTime))
  
             print("Spa Time: {0:04d} {1:02d} {2:02d} {3:02d}:{4:02d} {5}".format(
                 spa.year,
@@ -52,7 +52,25 @@ async def newFormatTest():
     asyncio.ensure_future(spa.listen())
     lastupd = 0
     for i in range(0, 9999999999):
-         lastupd = await ReadR(spa, lastupd)     
+        lastupd = await ReadR(spa, lastupd)     
+        #if i == 10:
+        #    await spa.send_CCmessage(241)
+        #if i == 20:
+        #    await spa.send_CCmessage(241)
+        #if i == 30:
+        #    await spa.send_CCmessage(241)
+        #if i == 40:
+        #    await spa.send_CCmessage(241)        
+        #if i == 10:
+        #    await spa.send_CCmessage(242)    
+        #if i == 20:
+        #    await spa.send_CCmessage(242)    
+        #if i == 30:
+        #    await spa.send_CCmessage(242)    
+        #if i == 40:
+        #    await spa.send_CCmessage(242)  
+        #if i == 50:
+        #    await spa.send_CCmessage(242)  
     return
 
     print('Pump Array: {0}'.format(str(spa.pump_array)))
